@@ -16,7 +16,7 @@ public class Block {
     private String hash;
 
     public static Block getGenesis() {
-        return new Block(0, 1504137600, "TerminatorGenisys", "0", "09a942594b2be3a9ab83959f8e40ce14cc617819600a43a13e03794acd63c3f0");
+        return new Block(0, 1504137600, "TerminatorGenisys", "0", "c30c20c418da89d60508d7c1a4cf2364bb7652289081535c9fbc24586453655eb0e60218588b49b596e4cf9171c5177ea9778a4fe691a0b4ce4df08396c8eb75");
     }
 
     public String recalculateHash() {

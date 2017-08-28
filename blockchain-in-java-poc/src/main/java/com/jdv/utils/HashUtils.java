@@ -9,6 +9,6 @@ public final class HashUtils {
 
     public static String nextHash(long index, long timestamp, String data, String previousHash) {
         String blockData = index + timestamp + data + previousHash;
-        return DigestUtils.sha256Hex(blockData);
+        return DigestUtils.sha512Hex(blockData);
     }
 }

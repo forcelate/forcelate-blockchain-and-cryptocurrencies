@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
-public class BlockResource {
-    private static final Logger LOGGER = LoggerFactory.getLogger(BlockResource.class);
+@RequestMapping("/api/blockchain")
+public class BlockchainResource {
+    private static final Logger LOGGER = LoggerFactory.getLogger(BlockchainResource.class);
 
     private final BlockService blockService;
 
     @Autowired
-    public BlockResource(BlockService blockService) {
+    public BlockchainResource(BlockService blockService) {
         this.blockService = blockService;
     }
 
-    @RequestMapping(value = "/blockchain", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getBlockchain() {
         return ResponseEntity.ok().body(blockService.getBlockchain());
     }
