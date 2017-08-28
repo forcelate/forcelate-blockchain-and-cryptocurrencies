@@ -15,7 +15,7 @@ import java.util.List;
 public class BlockService {
     private static final Logger LOGGER = LoggerFactory.getLogger(BlockService.class);
 
-    private static final List<Block> blockchainInMemory = new ArrayList<>();
+    private static List<Block> blockchainInMemory = new ArrayList<>();
 
     @PostConstruct
     public void init() {
