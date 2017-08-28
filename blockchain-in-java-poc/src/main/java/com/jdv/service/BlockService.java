@@ -22,19 +22,14 @@ public class BlockService {
         return blockchainInMemory;
     }
 
-    public Block nextBlock(String nextData) {
+    public boolean addBlock(String nextBlockData) {
+        Block nextBlock = nextBlock(nextBlockData);
         Block latestBlock = getLatestBlock();
-        long nextIndex = latestBlock.getIndex() + 1;
-        long nextTimestamp = new Date().getTime();
-        String previousHash = latestBlock.getPreviousHash();
-        String nextHash = HashUtils.nextHash(nextIndex, nextTimestamp, nextData, previousHash);
-        return new Block(nextIndex, nextTimestamp, nextData, previousHash, nextHash);
-    }
-
-    public boolean isNextBlockValid(Block nextBlock, Block previousBlock) {
-        return (nextBlock.getIndex() != previousBlock.getIndex() ||
-                !nextBlock.getPreviousHash().equals(previousBlock.getHash()) ||
-                !nextBlock.getHash().equals(previousBlock.recalculateHash()));
+        if (isNextBlockValid(nextBlock, latestBlock)) {
+            blockchainInMemory.add(nextBlock);
+            return true;
+        }
+        return false;
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -42,5 +37,20 @@ public class BlockService {
     // ---------------------------------------------------------------------------------------------
     private Block getLatestBlock() {
         return blockchainInMemory.get(blockchainInMemory.size() - 1);
+    }
+
+    private Block nextBlock(String nextBlockData) {
+        Block latestBlock = getLatestBlock();
+        long nextIndex = latestBlock.getIndex() + 1;
+        long nextTimestamp = new Date().getTime();
+        String previousHash = latestBlock.getPreviousHash();
+        String nextHash = HashUtils.nextHash(nextIndex, nextTimestamp, nextBlockData, previousHash);
+        return new Block(nextIndex, nextTimestamp, nextBlockData, previousHash, nextHash);
+    }
+
+    private boolean isNextBlockValid(Block nextBlock, Block previousBlock) {
+        return (nextBlock.getIndex() != previousBlock.getIndex() ||
+                !nextBlock.getPreviousHash().equals(previousBlock.getHash()) ||
+                !nextBlock.getHash().equals(previousBlock.recalculateHash()));
     }
 }

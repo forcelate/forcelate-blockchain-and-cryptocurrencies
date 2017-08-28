@@ -1,0 +1,33 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Blockchain in Java",
+		"_postman_id": "61726d90-1120-14ff-3162-edb16b692d24",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get blockchain",
+			"request": {
+				"url": "http://localhost:8484/api/blockchain",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Mine block",
+			"request": {
+				"url": "http://localhost:8484/api/mine/aaaa",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
