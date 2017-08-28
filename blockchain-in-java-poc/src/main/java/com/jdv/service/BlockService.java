@@ -62,11 +62,11 @@ public class BlockService {
             return false;
         }
         String expectedHash = nextBlock.recalculateHash();
-        // WARNING: here could be mining algorithm check
         if (!nextBlock.getHash().equals(expectedHash)) {
             LOGGER.info("Hash verification failed. Expected hash = '{}'", expectedHash);
             return false;
         }
+        // NOTE: here should be mining algorithm checks
         return true;
     }
 }
