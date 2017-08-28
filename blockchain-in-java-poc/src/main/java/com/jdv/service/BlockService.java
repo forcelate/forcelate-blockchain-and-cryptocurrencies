@@ -1,19 +1,26 @@
 package com.jdv.service;
 
 import com.jdv.entity.Block;
-import com.jdv.utils.BlockUtils;
 import com.jdv.utils.HashUtils;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class BlockService {
-    private static final ArrayList<Block> blockchainInMemory = new ArrayList<Block>() {{
-        add(Block.getGenesis());
-    }};
+    private static final List<Block> blockchainInMemory = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {
+        blockchainInMemory.add(Block.getGenesis());
+    }
+
+    public List<Block> getBlockchain() {
+        return blockchainInMemory;
+    }
 
     public Block nextBlock(String nextData) {
         Block latestBlock = getLatestBlock();
@@ -22,6 +29,12 @@ public class BlockService {
         String previousHash = latestBlock.getPreviousHash();
         String nextHash = HashUtils.nextHash(nextIndex, nextTimestamp, nextData, previousHash);
         return new Block(nextIndex, nextTimestamp, nextData, previousHash, nextHash);
+    }
+
+    public boolean isNextBlockValid(Block nextBlock, Block previousBlock) {
+        return (nextBlock.getIndex() != previousBlock.getIndex() ||
+                !nextBlock.getPreviousHash().equals(previousBlock.getHash()) ||
+                !nextBlock.getHash().equals(previousBlock.recalculateHash()));
     }
 
     // ---------------------------------------------------------------------------------------------
