@@ -9,6 +9,7 @@ import ws.wamp.jawampa.WampClientBuilder;
 import ws.wamp.jawampa.connection.IWampConnectorProvider;
 import ws.wamp.jawampa.transport.netty.NettyWampClientConnectorProvider;
 
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class WampService {
@@ -38,21 +39,11 @@ public class WampService {
                         .withReconnectInterval(DEFAULT_RECONNECT_INTERVAL_IN_SECONDS, TimeUnit.SECONDS)
                         .build();
                 // status
-                System.out.println("---");
-                System.out.println(client);
-                System.out.println("---");
                 client.statusChanged().subscribe(state -> {
-                    System.out.println("---");
-                    System.out.println("updated: " + state);
-                    System.out.println("---");
+                    System.out.println(new Date() + ": Poloniex websocket client status changed to " + state + ". Please wait...");
                     // negative case
                     boolean newStateDisconnectedState = (state instanceof WampClient.DisconnectedState);
                     boolean clientStateConnectingState = (this.clientState instanceof WampClient.ConnectingState);
-                    System.out.println("---");
-                    System.out.println("newStateDisconnectedState: " + newStateDisconnectedState);
-                    System.out.println("clientStateConnectingState: " + clientStateConnectingState);
-                    System.out.println("AND: " + (newStateDisconnectedState && clientStateConnectingState));
-                    System.out.println("---");
                     if (newStateDisconnectedState && clientStateConnectingState) {
                         WampClient.DisconnectedState disconnectedState = (WampClient.DisconnectedState) state;
                         Throwable throwableReason = disconnectedState.disconnectReason();
@@ -66,13 +57,11 @@ public class WampService {
                     this.clientState = state;
                     boolean newStateConnectedState = (state instanceof WampClient.ConnectedState);
                     if (newStateConnectedState) {
+                        System.out.println(new Date() + ": Poloniex websocket client status changed to Connected. Hooray!");
                         completable.onComplete();
                     }
                 });
                 client.open();
-                System.out.println("---");
-                System.out.println(client);
-                System.out.println("---");
             } catch (Exception e) {
                 completable.onError(e);
             }
@@ -80,9 +69,6 @@ public class WampService {
     }
 
     public Observable<PubSubData> subscribeOnChannel(String channel) {
-        System.out.println("---");
-        System.out.println(clientState);
-        System.out.println("---");
         boolean clientStateConnectedState = (this.clientState instanceof WampClient.ConnectedState);
         if (clientStateConnectedState) {
             return RxJavaInterop.toV2Observable(client.makeSubscription(channel));
