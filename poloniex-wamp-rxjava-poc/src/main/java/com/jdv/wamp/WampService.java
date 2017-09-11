@@ -39,7 +39,7 @@ public class WampService {
                         .withReconnectInterval(DEFAULT_RECONNECT_INTERVAL_IN_SECONDS, TimeUnit.SECONDS)
                         .build();
                 // status
-                client.statusChanged().subscribe(state -> {
+                this.client.statusChanged().subscribe(state -> {
                     System.out.println(new Date() + ": Poloniex websocket client status changed to " + state + ". Please wait...");
                     // negative case
                     boolean newStateDisconnectedState = (state instanceof WampClient.DisconnectedState);
@@ -61,7 +61,7 @@ public class WampService {
                         completable.onComplete();
                     }
                 });
-                client.open();
+                this.client.open();
             } catch (Exception e) {
                 completable.onError(e);
             }
@@ -71,7 +71,7 @@ public class WampService {
     public Observable<PubSubData> subscribeOnChannel(String channel) {
         boolean clientStateConnectedState = (this.clientState instanceof WampClient.ConnectedState);
         if (clientStateConnectedState) {
-            return RxJavaInterop.toV2Observable(client.makeSubscription(channel));
+            return RxJavaInterop.toV2Observable(this.client.makeSubscription(channel));
         } else {
             return Observable.error(new RuntimeException("Wamp client problems. Client state is NOT connected"));
         }
