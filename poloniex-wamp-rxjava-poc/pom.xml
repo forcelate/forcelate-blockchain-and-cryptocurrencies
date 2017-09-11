@@ -8,5 +8,36 @@
     <artifactId>poloniex-wamp-rxjava-poc</artifactId>
     <version>1.0</version>
 
+    <properties>
+        <!-- environment -->
+        <java.version>1.8</java.version>
+        <!-- dependencies -->
+        <junit.version>4.12</junit.version>
+        <!-- plugins -->
+        <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+    </properties>
 
+    <dependencies>
+        <!-- Test: JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
