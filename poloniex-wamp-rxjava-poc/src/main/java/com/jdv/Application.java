@@ -22,7 +22,7 @@ public class Application {
             System.out.println(new Date() + ": Poloniex WebSockets [TICKER]: " + ticker.toString());
         });
         // all trades
-        poloniexReactiveExchange.getTicker(currencyPair).forEach(trade -> {
+        poloniexReactiveExchange.getTrades(currencyPair).forEach(trade -> {
             System.out.println(new Date() + ": Poloniex WebSockets [TRADES]: " + trade);
         });
 
