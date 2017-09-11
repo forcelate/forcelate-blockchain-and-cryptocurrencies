@@ -12,12 +12,65 @@
         <!-- environment -->
         <java.version>1.8</java.version>
         <!-- dependencies -->
+        <jawampa.version>0.5.0</jawampa.version>
         <junit.version>4.12</junit.version>
+        <lombok.version>1.16.8</lombok.version>
+        <xchange.version>4.2.2</xchange.version>
         <!-- plugins -->
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
     </properties>
 
     <dependencies>
+        <!-- XChange -->
+        <dependency>
+            <groupId>org.knowm.xchange</groupId>
+            <artifactId>xchange-core</artifactId>
+            <version>${xchange.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.knowm.xchange</groupId>
+            <artifactId>xchange-poloniex</artifactId>
+            <version>${xchange.version}</version>
+        </dependency>
+        <!-- WAMP -->
+        <dependency>
+            <groupId>ws.wamp.jawampa</groupId>
+            <artifactId>jawampa-core</artifactId>
+            <version>${jawampa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ws.wamp.jawampa</groupId>
+            <artifactId>jawampa-netty</artifactId>
+            <version>${jawampa.version}</version>
+        </dependency>
+        <!-- RxJava -->
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.akarnokd</groupId>
+            <artifactId>rxjava2-interop</artifactId>
+            <version>0.8.3</version>
+        </dependency>
+        <!-- JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
         <!-- Test: JUnit -->
         <dependency>
             <groupId>junit</groupId>
