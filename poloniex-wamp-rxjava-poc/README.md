@@ -7,4 +7,5 @@ Poloniex WAMP RxJava PoC — Сonsole application to retrieve Poloniex public da
 
 ### Notes
 Poloniex Ticker - WORKING
+
 Poloniex OrderBooks & Trades - UNDER DEVELOPMENT. Websockets `wss://api.poloniex.com` have problem with currency pair channel (e.g. ETH_BTC)
