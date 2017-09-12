@@ -3,16 +3,18 @@ package com.jdv.wamp;
 import hu.akarnokd.rxjava.interop.RxJavaInterop;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
+import org.apache.log4j.Logger;
 import ws.wamp.jawampa.PubSubData;
 import ws.wamp.jawampa.WampClient;
 import ws.wamp.jawampa.WampClientBuilder;
 import ws.wamp.jawampa.connection.IWampConnectorProvider;
 import ws.wamp.jawampa.transport.netty.NettyWampClientConnectorProvider;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class WampService {
+    private static final Logger LOGGER = Logger.getLogger(WampService.class);
+
     private static final int DEFAULT_RECONNECT_INTERVAL_IN_SECONDS = 5;
 
     private final String uri;
@@ -40,7 +42,7 @@ public class WampService {
                         .build();
                 // status
                 this.client.statusChanged().subscribe(state -> {
-                    System.out.println(new Date() + ": Poloniex websocket client status changed to " + state + ". Please wait...");
+                    LOGGER.info("Poloniex websocket client status changed to " + state + ". Please wait...");
                     // negative case
                     boolean newStateDisconnectedState = (state instanceof WampClient.DisconnectedState);
                     boolean clientStateConnectingState = (this.clientState instanceof WampClient.ConnectingState);
@@ -57,7 +59,7 @@ public class WampService {
                     this.clientState = state;
                     boolean newStateConnectedState = (state instanceof WampClient.ConnectedState);
                     if (newStateConnectedState) {
-                        System.out.println(new Date() + ": Poloniex websocket client status changed to Connected. Hooray!");
+                        LOGGER.info("Poloniex websocket client status changed to Connected. Hooray!");
                         completable.onComplete();
                     }
                 });

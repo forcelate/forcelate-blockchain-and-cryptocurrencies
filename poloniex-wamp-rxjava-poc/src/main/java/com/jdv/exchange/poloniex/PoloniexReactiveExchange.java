@@ -1,10 +1,12 @@
 package com.jdv.exchange.poloniex;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.jdv.Application;
 import com.jdv.exchange.ReactiveExchange;
 import com.jdv.wamp.WampService;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
+import org.apache.log4j.Logger;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
@@ -17,6 +19,8 @@ import org.knowm.xchange.poloniex.dto.marketdata.PoloniexTicker;
 import java.math.BigDecimal;
 
 public class PoloniexReactiveExchange extends PoloniexExchange implements ReactiveExchange {
+    private static final Logger LOGGER = Logger.getLogger(Application.class);
+
     private static final String URI = "wss://api.poloniex.com";
     private static final String REALM = "realm1";
 
@@ -49,15 +53,14 @@ public class PoloniexReactiveExchange extends PoloniexExchange implements Reacti
     @Override
     public Observable<Trade> getTrades(CurrencyPair currencyPair) {
         String channel = currencyPair.toString().replace("/", "_");
-        System.out.println("CHANNEL: " + channel);
         return wampService.subscribeOnChannel(channel).map(
                 pubSubData -> {
                     for (int i = 0; i < pubSubData.arguments().size(); i++) {
                         JsonNode item = pubSubData.arguments().get(i);
                         String tradeType = item.get("type").asText();
-                        System.out.println("===>");
-                        System.out.println("tradeType: " + tradeType);
-                        System.out.println("===>");
+                        LOGGER.info("===>");
+                        LOGGER.info("tradeType: " + tradeType);
+                        LOGGER.info("===>");
                         if ("newTrade".equals(tradeType)) {
 
                         } else {
