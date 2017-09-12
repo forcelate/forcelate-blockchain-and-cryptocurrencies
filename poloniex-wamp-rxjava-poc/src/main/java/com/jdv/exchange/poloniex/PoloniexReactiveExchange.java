@@ -6,7 +6,6 @@ import com.jdv.exchange.ReactiveExchange;
 import com.jdv.wamp.WampService;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
-import org.apache.log4j.Logger;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
@@ -15,11 +14,13 @@ import org.knowm.xchange.poloniex.PoloniexExchange;
 import org.knowm.xchange.poloniex.PoloniexUtils;
 import org.knowm.xchange.poloniex.dto.marketdata.PoloniexMarketData;
 import org.knowm.xchange.poloniex.dto.marketdata.PoloniexTicker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 
 public class PoloniexReactiveExchange extends PoloniexExchange implements ReactiveExchange {
-    private static final Logger LOGGER = Logger.getLogger(Application.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
     private static final String URI = "wss://api.poloniex.com";
     private static final String REALM = "realm1";

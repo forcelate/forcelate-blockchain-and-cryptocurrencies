@@ -1,9 +1,11 @@
 package com.jdv.wamp;
 
+import com.jdv.Application;
 import hu.akarnokd.rxjava.interop.RxJavaInterop;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ws.wamp.jawampa.PubSubData;
 import ws.wamp.jawampa.WampClient;
 import ws.wamp.jawampa.WampClientBuilder;
@@ -13,7 +15,7 @@ import ws.wamp.jawampa.transport.netty.NettyWampClientConnectorProvider;
 import java.util.concurrent.TimeUnit;
 
 public class WampService {
-    private static final Logger LOGGER = Logger.getLogger(WampService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
     private static final int DEFAULT_RECONNECT_INTERVAL_IN_SECONDS = 5;
 
