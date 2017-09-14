@@ -1,5 +1,10 @@
 # jdv-blockchain-and-cryptocurrencies
 Blockchain, Cryptocurrencies, Crypto Exchanges Proofs of Concepts repository
+jdv-blockchain-and-cryptocurrencies
+
+<p align="center">
+	<img src="https://github.com/jedivision-software/jdv-blockchain-and-cryptocurrencies/blob/master/img/jdv-blockchain-and-cryptocurrencies.jpg?raw=true" alt=""/>
+</p>
 
 # Proofs of Concepts:
 
