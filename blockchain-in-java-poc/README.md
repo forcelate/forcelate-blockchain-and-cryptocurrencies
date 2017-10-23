@@ -1,5 +1,2 @@
 # blockchain-in-java-poc
-Blockchain in Java PoC — Simple blockchain implementation in Java using Spring Framework and Lombok
-
-### Note...
-UNDER DEVELOPMENT, PROGRESS: 75%
+Blockchain PoC — Blockchain using Java, Spring Framework, Lombok (only blocks concept, no PoS / PoW)
