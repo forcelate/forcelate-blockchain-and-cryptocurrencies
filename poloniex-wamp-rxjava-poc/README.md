@@ -6,6 +6,8 @@ Poloniex WAMP RxJava PoC — Сonsole application to retrieve Poloniex public da
 2. Poloniex API is blocked in Ukraine (API return 403 HTTP status code). You could use VPN
 
 ### Notes
-Poloniex Ticker - WORKING
+Poloniex Ticker - DONE
 
-Poloniex OrderBooks & Trades - UNDER DEVELOPMENT. Websockets `wss://api.poloniex.com` have problem with currency pair channel (e.g. ETH_BTC)
+Poloniex Trades - UNDER DEVELOPMENT / NOT WORKING. 
+
+Websockets `wss://api.poloniex.com` has issue with currency pair channel (e.g. ETH_BTC)
