@@ -2,7 +2,7 @@
 Blockchain, Cryptocurrencies, Crypto Exchanges Proofs of Concepts repository
 
 <p align="center">
-	<img src="https://github.com/jedivision-software/jdv-blockchain-and-cryptocurrencies/blob/master/img/jdv-blockchain-and-cryptocurrencies.jpg?raw=true" alt=""/>
+	<img src="https://github.com/forcelate/forcelate-blockchain-and-cryptocurrencies/blob/master/img/jdv-blockchain-and-cryptocurrencies.jpg?raw=true" alt=""/>
 </p>
 
 # Proofs of Concepts:
