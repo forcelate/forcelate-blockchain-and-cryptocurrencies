@@ -1,5 +1,5 @@
-# jdv-blockchain-and-cryptocurrencies
-Blockchain, Cryptocurrencies, Crypto Exchanges Proofs of Concepts repository
+# forcelate-blockchain-and-cryptocurrencies
+Welcome to Forcelate blockchain, cryptocurrencies, crypto exchanges proofs of concepts repository. May the force be with you.
 
 <p align="center">
 	<img src="https://github.com/forcelate/forcelate-blockchain-and-cryptocurrencies/blob/master/img/jdv-blockchain-and-cryptocurrencies.jpg?raw=true" alt=""/>
