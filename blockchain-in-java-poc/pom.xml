@@ -15,6 +15,8 @@
         <commons.codec.version>1.10</commons.codec.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.16.6</lombok.version>
+        <!-- plugins -->
+        <plugin.maven.compiler.version>3.6.2</plugin.maven.compiler.version>
     </properties>
 
     <parent>
@@ -55,9 +57,18 @@
     </dependencies>
 
     <build>
-        <finalName>application</finalName>
-
+        <finalName>app</finalName>
         <plugins>
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.maven.compiler.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
             <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
