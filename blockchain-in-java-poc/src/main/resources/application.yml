@@ -1,7 +1,3 @@
 # HTTP Server
 server:
   port: 8484
-
-# Socket Server
-socketServer:
-  port: 8585
