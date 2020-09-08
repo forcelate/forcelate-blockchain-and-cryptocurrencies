@@ -1,8 +1,9 @@
-# forcelate-temple-cryptocurrencies
-Welcome to Forcelate blockchain, cryptocurrencies, crypto exchanges proofs of concepts repository. May the force be with you.
+# tech1-temple-cryptocurrencies
+Welcome to Proofs of Concepts repository about blockchain, cryptocurrencies, crypto exchanges  
+May the force be with you
 
 <p align="center">
-	<img src="https://github.com/forcelate/forcelate-temple-cryptocurrencies/blob/master/img/jdv-blockchain-and-cryptocurrencies.jpg?raw=true" alt=""/>
+	<img src="https://github.com/tech1-io/tech1-temple-cryptocurrencies/blob/master/img/temple-cryptocurrencies.jpg?raw=true" alt=""/>
 </p>
 
 # Proofs of Concepts:
